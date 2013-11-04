@@ -42,6 +42,8 @@
           <dt>F</dt><dd>常に最前面表示にする/オフにする</dd>
           <br>
           <dt>E</dt><dd>設定情報を消去、初期化(本当に実行するか確認します)</dd>
+          <br>
+          <dt>R</dt><dd>ページを再読み込み</dd>
         </dl>
         <p class='version'></p>
         <p><a href='javascript:window.openExternal("http://makebooth.com/i/1xkN1")'>teitoku @ makebooth</a></p>
@@ -174,7 +176,13 @@
           alert('全ての設定情報を消去しました、アプリケーションを再起動してください');
         }
       };
-
+      
+      window.reloadPage = function () {
+        if(window.confirm("再読み込みしますか？")) {
+          location.reload();
+        }
+      };
+      
       window.displayModal = function (message) {
         $('#modal').text(message).fadeIn(60, function(){
           setTimeout(function(){
@@ -280,6 +288,9 @@
             break;
           case 69: /* E */
             window.resetSetting();
+            break;
+          case 82: /* R */
+            window.reloadPage();
             break;
           //default:
           //  console.log(event.keyCode);
